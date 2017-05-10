@@ -1,0 +1,165 @@
+$card-mb: 25px
+$card-mb-middle: 20px
+$card-mb-small: $indent
+$card-h: 210px
+$card-w: 31%
+$card-w-middle: 48%
+$card-w-small: 100%
+$card-col: 3
+$card-col-middle: 2
+$card-col-small: 1
+$card-label-size: 60px
+
+.cards-out
+  +clearfix
+.card
+  outline: 1px solid $card-c
+  height: $card-h
+  float: left
+  box-sizing: border-box
+  width: $card-w
+  margin: 0 (100% - $card-col*$card-w)/($card-col*2) $card-mb
+  position: relative
+  padding: $indent-big $indent-big 0
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  line-height: $line-height
+  box-shadow: $shadow-c
+  &:hover
+    outline-width: 3px
+    .card-title
+      text-decoration: underline
+  +middle
+    width: $card-w-middle
+    margin: 0 (100% - $card-col-middle*$card-w-middle)/($card-col-middle*2) $card-mb-middle
+  +small
+    width: $card-w-small
+    margin: 0 0 $card-mb-small
+  &:first-child
+    height: $card-h*2 + $card-mb
+    outline-color: $card-first-c
+    align-content: space-between
+    .card
+      &-label
+        background-color: $card-first-c
+      &-image
+        order: 1
+        flex-basis: 100%
+        height: 260px
+        img
+          max-height: 260px
+      &-price
+        order: 2
+        &-new
+          color: $card-first-c
+          font-weight: bold
+          font-size: 25px
+        &-old
+          margin-left: $indent
+      &-text
+        order: 3
+        border-bottom: 2px dashed $border-c
+        flex-basis: 100%
+        padding: $indent 40% $indent 0
+        +small
+          padding-right: 0
+      &-footer
+        order: 4
+        +small
+          padding-top: 5px
+    +middle
+      height: $card-h*2 + $card-mb-middle
+    +small
+      height: $card-h*2 + $card-mb-small
+  &:nth-child(2),
+  &:nth-child(3)
+    outline-color: $card-main-c
+    .card-label
+      background-color: $card-main-c
+    .card-price-new
+      color: $card-main-c
+  &-label
+    position: absolute
+    background-color: $card-c
+    top: $indent
+    left: $indent
+    height: $card-label-size
+    width: $card-label-size
+    border-radius: 50%
+    text-align: right
+    font-size: 17px
+    color: $white-c
+    padding: $indent $indent-big
+    box-sizing: border-box
+    &-percent,
+    &-text
+      display: block
+      line-height: 1.1
+      letter-spacing: 1px
+    &-percent
+      text-align: center
+    &-text
+      text-align: right
+  &-text
+    flex-basis: 60%
+    padding-top: 60px
+  &-title
+    overflow: hidden
+    font-size: 1rem
+    height: 3*$font-size*$line-height
+    margin: 0
+  &-image
+    flex-basis: 40%
+    img
+      max-height: 115px
+      display: block
+      margin: 0 auto
+  &-price
+    flex: 1 100%
+    border-bottom: 2px dashed $border-c
+    &-new,
+    &-old
+      &:before
+        content: '$'
+    &-new
+      color: $card-c
+      font-size: 21px
+    &-old
+      margin-left: 20px
+      position: relative
+      &:after
+        content: ''
+        position: absolute
+        left: 0
+        right: 0
+        top: 50%
+        height: 2px
+        background-color: $text-c
+        transform-origin: 50%
+        transform: rotate(10deg)
+    &-name
+      float: right
+      margin-top: 7px
+  &-footer
+    flex: 1 100%
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+    align-items: center
+    font-size: 13px
+    min-height: 25px
+    line-height: 1
+    margin-bottom: 5px
+    &-text
+      width: 100%
+      text-align: center
+      position: relative
+      &:not(:first-child)
+        &:before
+          content: '|'
+          color: $border-c
+          position: absolute
+          left: 0
+          top: 50%
+          transform: translateY(-50%)
